@@ -45,8 +45,7 @@ cd ~/bench
 ## 関連
 
 * [ISUCON11予選問題](https://github.com/isucon/isucon11-qualify)
-* [matsuu/wsl-isucon9-qualifier](https://github.com/matsuu/wsl-isucon9-qualifier)
-* [matsuu/wsl-isucon10-qualifier](https://github.com/matsuu/wsl-isucon10-qualifier)
+* [matsuu/wsl-isucon](https://github.com/matsuu/wsl-isucon)
 
 ## TODO
 
