@@ -22,7 +22,7 @@ If ($hash -ne $sha256sum) {
 wsl.exe --import $Distro $InstallLocation $tarball
 
 $scriptsdir = Join-Path $PSScriptRoot "scripts"
-Get-ChildItem $scriptsdir -Filter *.sh | Foreach-Object {
+Get-ChildItem $scriptsdir -Filter *.sh | Sort-Object -Property FullName | Foreach-Object {
   (Get-Content $_.FullName) -join "`n" | wsl.exe -d $Distro /bin/bash -l
 }
 
