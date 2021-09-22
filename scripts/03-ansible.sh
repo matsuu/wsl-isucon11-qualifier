@@ -19,6 +19,7 @@ git clone --depth=1 https://github.com/isucon/isucon11-qualify.git ${GITDIR}
 
   # bench
   curl -sL https://github.com/isucon/isucon11-qualify/releases/download/public/initialize.json > roles/bench/files/initialize.json
+  curl -sL https://github.com/isucon/isucon11-qualify/releases/download/public/images.tgz > roles/bench/files/images.tgz
   sed -i -e '/InsecureSkipVerify/s/=.*/= true/' ../../bench/main.go
   sed -i -e 's/tls\.Config{}/tls.Config{InsecureSkipVerify: true}/' -e '/ServerName:/a\			InsecureSkipVerify: true,' ../../bench/scenario/posting.go
 
