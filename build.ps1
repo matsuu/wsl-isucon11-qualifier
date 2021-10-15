@@ -19,7 +19,7 @@ If ($hash -ne $sha256sum) {
   Write-Error "Checksum failed. Please delete $tarball manually."
 }
 
-wsl.exe --import $Distro $InstallLocation $tarball
+wsl.exe --import $Distro $InstallLocation $tarball --version 2
 
 $scriptsdir = Join-Path $PSScriptRoot "scripts"
 Get-ChildItem $scriptsdir -Filter *.sh | Sort-Object -Property FullName | Foreach-Object {
