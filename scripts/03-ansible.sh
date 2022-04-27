@@ -20,8 +20,6 @@ git clone --depth=1 https://github.com/isucon/isucon11-qualify.git ${GITDIR}
   # bench
   curl -sL https://github.com/isucon/isucon11-qualify/releases/download/public/initialize.json > roles/bench/files/initialize.json
   curl -sL https://github.com/isucon/isucon11-qualify/releases/download/public/images.tgz > roles/bench/files/images.tgz
-  sed -i -e '/InsecureSkipVerify/s/=.*/= true/' ../../bench/main.go
-  sed -i -e 's/tls\.Config{}/tls.Config{InsecureSkipVerify: true}/' -e '/ServerName:/a\			InsecureSkipVerify: true,' ../../bench/scenario/posting.go
 
   # contestant
   curl -sL https://github.com/isucon/isucon11-qualify/releases/download/public/1_InitData.sql > roles/contestant/files/initial-data.sql
@@ -32,6 +30,11 @@ git clone --depth=1 https://github.com/isucon/isucon11-qualify.git ${GITDIR}
 
   ansible-playbook -i standalone.hosts --connection=local site.yml
   /var/lib/cloud/scripts/per-instance/generate-env.sh
+
+  mkdir -p /usr/share/ca-certificates/isucondition
+  cp /etc/nginx/certificates/tls-cert.pem /usr/share/ca-certificates/isucondition
+  echo "isucondition/tls-cert.pem" >> /etc/ca-certificates.conf
+  update-ca-certificates
 )
 rm -rf ${GITDIR}
 
